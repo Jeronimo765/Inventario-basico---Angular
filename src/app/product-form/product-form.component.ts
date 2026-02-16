@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 interface Product {
   id: number;
@@ -8,9 +10,12 @@ interface Product {
 
 @Component({
   selector: 'app-product-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './product-form.component.html'
 })
 export class ProductFormComponent {
+
   name: string = '';
   price: number = 0;
 
@@ -18,18 +23,18 @@ export class ProductFormComponent {
 
   addProduct() {
 
-    if (!this.name.trim() || this.price <= 0) {
-      return;
-    }
+    if (!this.name.trim() || this.price <= 0) return;
 
     const newProduct: Product = {
       id: Date.now(),
       name: this.name,
       price: this.price
     };
+
     this.productCreated.emit(newProduct);
 
     this.name = '';
     this.price = 0;
   }
+
 }

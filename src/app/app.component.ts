@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 interface Product {
   id: number;
@@ -8,6 +11,12 @@ interface Product {
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ProductFormComponent,
+    ProductListComponent
+  ],
   templateUrl: './app.component.html'
 })
 export class AppComponent {
