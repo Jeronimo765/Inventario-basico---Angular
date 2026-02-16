@@ -1,0 +1,19 @@
+<h1>Inventario Básico</h1>
+
+<app-product-form 
+  (productCreated)="addProduct($event)">
+</app-product-form>
+
+<app-product-list
+  [products]="products"
+  (productDeleted)="deleteProduct($event)">
+</app-product-list>
+
+<hr>
+
+<p>Total productos: {{ products.length }}</p>
+<p>Suma total: {{ total }}</p>
+
+<div *ngIf="total > 100000">
+  ¡Gran inventario!
+</div>
